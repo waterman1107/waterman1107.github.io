@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+ 
+  
+</head>
+<body>
+   <script src="https://code.jquery.com/jquery-3.4.1.js"></script> 
+
+  <H1>Конвертировать в гривни-</H1> 
+  <input type="text"> 
+  <button id="US">USD</button> 
+  <button id="GB">GBP</button> 
+  <button id="EU">EUR</button> 
+  <p>answer</p>
+   <script type="text/javascript">$("#US").click(function(){ $.getJSON("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json",function(result){
+   var money= $("input").val();    $("p").text(money*result[24]["rate"])
+  })}
+)
+$("#GB").click(function(){ $.getJSON("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json",function(result){
+   var money= $("input").val();    $("p").text(money*result[23]["rate"])
+  })}
+)
+$("#EU").click(
+function(){ $.getJSON("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json",function(result){   var money= $("input").val();
+    $("p").text(money*result[31]["rate"])  })
+})</script>
+</body>
+</html>
